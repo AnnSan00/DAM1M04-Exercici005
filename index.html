@@ -1,121 +1,101 @@
-<!DOCTYPE html>
-<html lang="ca">
+<!doctype html>
+<html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Transicions</title>
+  <meta charset="UTF-8">
+  <title>Inicio · Reino</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <!-- Preconnect Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,600;0,800;1,700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+  <!-- Cinzel (títulos) + Crimson Pro (texto) -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Material Symbols Outlined -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24..48,300..700,0..1,0..200"/>
   <link rel="stylesheet" href="estils.css">
 </head>
+<body>
 
-</html>
-<!doctype html>
-<html lang="ca">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-  <title>Transicions · Exercici005</title>
+<header class="navbar">
+  <div class="container">
+    <a class="brand" href="index.html">
+      <span class="material-symbols-outlined">castle</span>
+      Reino 
+    </a>
+    <nav class="nav">
+      <a class="active" href="index.html"><span class="material-symbols-outlined">home</span>Home</a>
+      <a href="galeria.html"><span class="material-symbols-outlined">photo_library</span>Galería</a>
+      <a href="guia-estil.html"><span class="material-symbols-outlined">menu_book</span>Guía de estilo</a>
+    </nav>
+  </div>
+</header>
 
-  <!-- Google Fonts (preconnect + dues famílies) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@100;300;400;600;800&display=swap" rel="stylesheet" />
-
-  <!-- Material Icons Outlined -->
-  <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24..48,100..800,0..1,-50..200" />
-
-  <link rel="stylesheet" href="estils.css" />
-</head>
-<body class="text-font">
-  <header class="navbar">
-    <div class="autocenter inner">
-      <a class="nav-brand title-font" href="index.html">
-        <span class="material-symbols-outlined" style="font-variation-settings:'wght' 700;">blur_on</span>
-        Mini Lloc
-      </a>
-      <nav class="nav-links">
-        <a href="index.html" class="active"><span class="material-symbols-outlined">home</span> Home</a>
-        <a href="galeria.html"><span class="material-symbols-outlined">gallery_thumbnail</span> Galeria</a>
-        <a href="guia-estil.html"><span class="material-symbols-outlined">styler</span> Guia d’estil</a>
-      </nav>
-    </div>
-  </header>
-
+<main>
   <section class="hero">
-    <div class="content">
-      <h1 class="title-font">Transicions que se senten bé</h1>
-      <p>Colors, ombres, escala i timing functions demostrats amb targetes interactives — sense JS, només CSS.</p>
-      <a href="#cards" class="cta"><span class="material-symbols-outlined">touch_app</span> Explora les targetes</a>
+    <div class="container content">
+      <h1>Crónicas del Reino</h1>
+      <p>Una travesía entre castillos, bosques y aldeas.</p>
+      <a class="btn" href="galeria.html">
+        <span class="material-symbols-outlined">explore</span>
+        Explorar lugares
+      </a>
     </div>
   </section>
 
-  <main class="autocenter stack-32" id="cards">
-    <section class="cards row-to-col">
-      <article class="card swap-1 t-linear">
-        <div class="image"></div>
+  <section class="container" style="padding: 2rem 0;">
+    <h2>Targetas interactivas</h2>
+    <p>Hover para ver color, sombra y escala. Cada carta usa una timing-function distinta y cambia la foto suavemente.</p>
+
+    <div class="cards">
+      <!-- Card 1: linear -->
+      <article class="card t-linear">
+        <div class="thumb">
+          <img src="./assets/img/carta-1-a.jpg" alt="Castillo al amanecer">
+          <img class="alt" src="./assets/img/carta-1-b.jpg" alt="Castillo con niebla">
+        </div>
         <div class="body">
-          <h3 class="title-font">Linear</h3>
-          <p>Transició constant al llarg del temps. Canvi de foto al :hover.</p>
+          <h3>Fortaleza del Alba</h3>
+          <p>Murallas doradas, ecos de gaitas en la bruma.</p>
         </div>
       </article>
 
-      <article class="card swap-2 t-ease-in">
-        <div class="image"></div>
+      <!-- Card 2: ease-in -->
+      <article class="card t-ease-in">
+        <div class="thumb">
+          <img src="./assets/img/carta-2-a.jpg" alt="Bosque encantado">
+          <img class="alt" src="./assets/img/carta-2-b.jpg" alt="Bosque nocturno">
+        </div>
         <div class="body">
-          <h3 class="title-font">Ease-in</h3>
-          <p>Comença lent, accelera al final. Ombra + escala suau.</p>
+          <h3>Bosque Silvano</h3>
+          <p>Donde los espíritus protegen a los viajeros.</p>
         </div>
       </article>
 
-      <article class="card swap-3 t-ease-out">
-        <div class="image"></div>
+      <!-- Card 3: ease-in-out -->
+      <article class="card t-ease-io">
+        <div class="thumb">
+          <img src="./assets/img/carta-3-a.jpg" alt="Aldea de piedra">
+          <img class="alt" src="./assets/img/carta-3-b.jpg" alt="Aldea nevada">
+        </div>
         <div class="body">
-          <h3 class="title-font">Ease-out</h3>
-          <p>Comença ràpid, s’alenteix. Destaquem el contorn primari.</p>
+          <h3>Aldea de Valgrán</h3>
+          <p>Pan caliente, historias al fuego y música de laúd.</p>
         </div>
       </article>
-    </section>
+    </div>
+  </section>
 
-    <section class="cards row-to-col">
-      <article class="card swap-1 t-ease">
-        <div class="image"></div>
-        <div class="body">
-          <h3 class="title-font">Ease</h3>
-          <p>Curva suau per defecte en molts dissenys.</p>
-        </div>
-      </article>
-
-      <article class="card swap-2 t-ease-in-out">
-        <div class="image"></div>
-        <div class="body">
-          <h3 class="title-font">Ease-in-out</h3>
-          <p>Lent-in + lent-out. Bona per interaccions elegants.</p>
-        </div>
-      </article>
-
-      <article class="card swap-3 t-ease-out">
-        <div class="image"></div>
-        <div class="body">
-          <h3 class="title-font">Ease-out (variant)</h3>
-          <p>Variant repetida per comparar sensacions.</p>
-        </div>
-      </article>
-    </section>
-
+  <section class="container" style="padding-bottom: 2rem;">
+    <h2>Menú secundario</h2>
+    <p>Solo estilo: transición de color y letter-spacing.</p>
     <nav class="submenu">
-      <a href="#"><span class="material-symbols-outlined">tune</span> Opció A</a>
-      <a href="#"><span class="material-symbols-outlined">bolt</span> Opció B</a>
-      <a href="#"><span class="material-symbols-outlined">palette</span> Opció C</a>
-      <a href="#"><span class="material-symbols-outlined">waves</span> Opció D</a>
+      <a href="#">Crónicas</a>
+      <a href="#">Ruta comercial</a>
+      <a href="#">Mapa del reino</a>
+      <a href="#">Taberna</a>
+      <a href="#">Gremios</a>
     </nav>
-  </main>
+  </section>
+</main>
 
-  <footer class="autocenter">
-    © 2025 · Línia visual comuna · Flexbox · Responsive ≥768px
-  </footer>
 </body>
 </html>
