@@ -1,14 +1,134 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ca">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Guia d’estil</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,600;0,800;1,700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
-  <link rel="stylesheet" href="estils.css">
-</head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>Guia d’estil · Exercici005</title>
 
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@100;300;400;600;800&display=swap" rel="stylesheet" />
+
+  <!-- Material Icons Outlined -->
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24..48,100..800,0..1,-50..200" />
+
+  <link rel="stylesheet" href="estils.css" />
+</head>
+<body class="text-font">
+  <header class="navbar">
+    <div class="autocenter inner">
+      <a class="nav-brand title-font" href="index.html">
+        <span class="material-symbols-outlined" style="font-variation-settings:'wght' 700;">blur_on</span>
+        Mini Lloc
+      </a>
+      <nav class="nav-links">
+        <a href="index.html"><span class="material-symbols-outlined">home</span> Home</a>
+        <a href="galeria.html"><span class="material-symbols-outlined">gallery_thumbnail</span> Galeria</a>
+        <a href="guia-estil.html" class="active"><span class="material-symbols-outlined">styler</span> Guia d’estil</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="autocenter stack-32">
+    <section class="stack-24 scale">
+      <h1 class="title-font">Guia d’estil</h1>
+      <h2 class="title-font">Tipografia i icones</h2>
+      <h3 class="title-font">Escala basada en rem</h3>
+      <p>Fem servir dues famílies: Bebas Neue per títols i Inter per text. L’alçada de línia és 1.6 per millorar la lectura, i l’escala tipogràfica és fluïda amb clamp.</p>
+    </section>
+
+    <section class="stack-24 sample-weights">
+      <h2 class="title-font">Pesos tipogràfics (Inter)</h2>
+      <p class="w100">100 — fi i tècnic</p>
+      <p class="w300">300 — lleuger i elegant</p>
+      <p class="w600">600 — semibold per destacar</p>
+      <p class="w800">800 — negreta contundent</p>
+    </section>
+
+    <section class="stack-24">
+      <h2 class="title-font">Alineació a la baseline</h2>
+      <div class="baseline-row">
+        <span class="material-symbols-outlined" style="font-variation-settings:'opsz' 32, 'wght' 500;">movie</span>
+        <span>Text alineat amb icona sobre la mateixa línia base.</span>
+      </div>
+    </section>
+
+    <section class="stack-24 icon-demo">
+      <h2 class="title-font" style="flex: 0 0 100%;">Material Icons (Outlined) amb variacions</h2>
+
+      <div class="item">
+        <span class="material-symbols-outlined" style="font-variation-settings:'opsz' 24, 'wght' 300, 'FILL' 0;">smart_toy</span>
+        <small>opsz:24 · wght:300 · FILL:0</small>
+      </div>
+
+      <div class="item">
+        <span class="material-symbols-outlined" style="font-variation-settings:'opsz' 32, 'wght' 600, 'FILL' 0;">smart_toy</span>
+        <small>opsz:32 · wght:600 · FILL:0</small>
+      </div>
+
+      <div class="item">
+        <span class="material-symbols-outlined" style="font-variation-settings:'opsz' 48, 'wght' 700, 'FILL' 1;">smart_toy</span>
+        <small>opsz:48 · wght:700 · FILL:1</small>
+      </div>
+    </section>
+
+    <section class="stack-24">
+      <h2 class="title-font">Botons i enllaços amb icona</h2>
+      <div class="row wrap">
+        <a class="btn" href="#"><span class="material-symbols-outlined">download</span> Descarrega</a>
+        <a class="btn" href="#"><span class="material-symbols-outlined">send</span> Envia</a>
+        <a class="link" href="#"><span class="material-symbols-outlined">open_in_new</span> Més informació</a>
+      </div>
+    </section>
+
+    <section class="stack-24">
+      <h2 class="title-font">Colors i formats</h2>
+      <table class="colors">
+        <thead>
+          <tr>
+            <th>Mostra</th>
+            <th>Nom</th>
+            <th>HEX</th>
+            <th>RGB</th>
+            <th>HSL</th>
+            <th>Alpha</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><div class="swatch" style="background:#5fb3ff;"></div></td>
+            <td>Primari</td>
+            <td>#5FB3FF</td>
+            <td>rgb(95, 179, 255)</td>
+            <td>hsl(206, 100%, 69%)</td>
+            <td>rgba(95, 179, 255, 0.5)</td>
+          </tr>
+          <tr>
+            <td><div class="swatch" style="background:#ff7aa2;"></div></td>
+            <td>Accent</td>
+            <td>#FF7AA2</td>
+            <td>rgb(255, 122, 162)</td>
+            <td>hsl(340, 100%, 74%)</td>
+            <td>rgba(255, 122, 162, 0.5)</td>
+          </tr>
+          <tr>
+            <td><div class="swatch" style="background:#141a29;"></div></td>
+            <td>Superfície</td>
+            <td>#141A29</td>
+            <td>rgb(20, 26, 41)</td>
+            <td>hsl(222, 34%, 12%)</td>
+            <td>rgba(20, 26, 41, 0.6)</td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="color:var(--muted)">Exemples d’accessibilitat: assegura contrast suficient entre text i fons, i evita textos per sota de 0.95rem en paràgrafs llargs.</p>
+    </section>
+  </main>
+
+  <footer class="autocenter">
+    © 2025 · Fonts carregades amb preconnect · Material Icons Outlined
+  </footer>
+</body>
 </html>
