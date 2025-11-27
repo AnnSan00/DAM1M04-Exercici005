@@ -88,8 +88,8 @@ Navbar (glass/frosted)
 }
 
 .navbar .container {
-  display: flex; 
-  align-items: center; 
+  display: flex;        /* convierte el .container en un contenedor flexbox. */
+  align-items: center;  /* alinea los elemntos verticalmente */
   gap: var(--space-2); /* Distribuye marca y nav */
 }
 
@@ -97,16 +97,30 @@ Navbar (glass/frosted)
 .brand {
   display: flex; align-items: center; gap: 0.5rem; /* Logo + texto */
   font-weight: 700; color: var(--neon-yellow);
-  text-shadow: var(--shadow-neon);
+  text-shadow: var(--shadow-neon);    /* aplica un efecto de sombra al texto*/
 }
-.nav { margin-left: auto; display: flex; gap: var(--space-2); } /* Empuja nav a la derecha */
+
+/* ===================
+Nav / Sticky
+(Barra de navegacion)
+=================== */
+.nav { 
+  /* Empuja nav a la derecha */
+  margin-left: auto; 
+  display: flex; 
+  gap: var(--space-2); /* añade un espacio uniforme entre cada enlace de navegación*/
+} 
+
 .nav a {
-  padding: 0.4rem 0.6rem;                        /* Click area */
+  padding: 0.4rem 0.6rem;                        /* amplía el área clicable de cada enlace, dándole espacio vertical y horizontal */
   border-radius: var(--radius-1);
-  transition: color 200ms ease, background 200ms ease, letter-spacing 200ms ease;
+  transition: color 200ms ease, background 200ms ease, letter-spacing 200ms ease;   /*añade animaciones suaves al cambiar color, fondo o espaciado de letras.*/
 }
+
 .nav a:hover { background: rgba(255,45,149,0.2); letter-spacing: 0.02em; } /* Feedback hover */
+/* */
 .nav a.active { background: rgba(0,240,255,0.2); color: var(--neon-blue); } /* Página activa */
+/* el enlace activo (la página en la que estás) se resalta con un fondo azul translúcido. además, el texto se vuelve azul neón.que indica qué sección está seleccionada o abierta.*/
 
 /* ===================
 Botones
@@ -168,6 +182,9 @@ Tarjetas (Transiciones)
 .card:hover .thumb img:not(.alt) { opacity: 0; }       /* Oculta principal */
 .card .body { padding: var(--space-2); color: var(--neon-green); } /* Texto de la tarjeta */
 
+/* Animación base ya la tienes en .card:hover */
+
+
 /* Timing functions por tarjeta (diferente sensación de aceleración) */
 .t-linear:hover   { transition-timing-function: linear; }     /* Constante */
 .t-ease-in:hover  { transition-timing-function: ease-in; }     /* Acelera al inicio */
@@ -195,29 +212,31 @@ Animaciones
 /* Loader circular girando infinitamente */
 .loader {
   width: 90px; height: 90px;
-  border-radius: 50%;
-  border: 6px solid var(--neon-blue);
-  border-top-color: var(--neon-pink);          /* Diferente color para el efecto */
+  border-radius: 50%;                          /*Crea un círculo perfecto de 90×90 px.*/
+  border: 6px solid var(--neon-blue);           /* Dibuja un anillo azul;*/
+  border-top-color: var(--neon-pink);          /*  el segmento superior es rosa para que, al rotar, se perciba el movimiento. */
   animation: spin 1.5s linear infinite;        /* Rotación continua */
-  margin: var(--space-3) auto;
-  box-shadow: 0 0 12px var(--neon-green);
+  margin: var(--space-3) auto;                  
+  box-shadow: 0 0 12px var(--neon-green);     /* Centra horizontalmente y añade glow verde alrededor.*/
 }
-@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes spin { to { transform: rotate(360deg); } }   /* Desde el estado inicial (0°) hasta to (360°). El navegador interpola la rotación.*/
 
 /* Orbe digital que rota y pulsa con cambio de color */
 .block-anim {
   width: 140px; height: 140px;
   border-radius: 50%;
-  background: var(--neon-pink);
+  background: var(--neon-pink);           /* Círculo grande con color inicial rosa.*/
   margin: var(--space-3) auto;
-  animation: pulseSpin 2s ease-in-out infinite alternate; /* Va y vuelve */
+  animation: pulseSpin 2s ease-in-out infinite alternate; /*Centrado y animación que va y vuelve (alternate) en 2 s, suavizando entrada y salida. */
 }
+/* ===================*/
 @keyframes pulseSpin {
-  0%   { transform: scale(1)   rotate(0deg);   background: var(--neon-pink); }
-  50%  { transform: scale(1.1) rotate(180deg); background: var(--neon-blue); }
-  100% { transform: scale(1.2) rotate(360deg); background: var(--neon-green); }
+  0%   { transform: scale(1)   rotate(0deg);   background: var(--neon-pink); } /* Tamaño normal, sin rotación, rosa.*/
+  50%  { transform: scale(1.1) rotate(180deg); background: var(--neon-blue); }  /* Crece ligeramente, gira media vuelta, cambia a azul.*/
+  100% { transform: scale(1.2) rotate(360deg); background: var(--neon-green); } /* Más grande, gira vuelta completa, pasa a verde. Con alternate, el ciclo invierte (vuelve a rosa reduciendo tamaño y rotación).*/
 }
 
+/* ===================*/
 /* Sello / pulso neón alternado */
 .alt-anim {
   width: 80px; height: 80px; margin: var(--space-2) auto;
@@ -226,10 +245,12 @@ Animaciones
   animation: pulse 1.2s ease-in-out infinite alternate; /* Pulso suave */
   box-shadow: 0 0 12px var(--neon-pink);
 }
+
 @keyframes pulse {
   0%   { transform: scale(1);   opacity: 0.7; }
   100% { transform: scale(1.2); opacity: 1; }
 }
+/* ===================*/
 
 /* ===================
 Scroll reveal + fallback
@@ -260,6 +281,7 @@ Scroll reveal + fallback
 @supports not (animation-timeline: view()) {
   .reveal { animation: fadeUp 1s ease both; }
 }
+/* ===================*/
 
 /* ===================
 Footer
@@ -279,6 +301,7 @@ Footer
 .footer a { color: var(--neon-yellow); transition: color 200ms ease; }
 .footer a:hover { color: var(--neon-pink); }
 
+/* ===================*/
 /* ===================
 Tabla (desktop)
 =================== */
@@ -302,20 +325,26 @@ Tabla (desktop)
 .table tbody tr:nth-child(even) {
   background: rgba(255,45,149,0.08); /* Zebra sutil */
 }
+/* ===================*/
 
+/* ===================*/
 /* ===================
 Utilidades de guía d’estil
 =================== */
 /* Alinear iconos y texto en baseline para ejemplo */
 .sample-row { display: flex; align-items: baseline; gap: var(--space-2); }
+
 /* Tamaños de icono para demostración */
 .icon-lg { font-size: 32px; }
 .icon-xl { font-size: 40px; }
+
 /* Icono relleno (variaciones de Material Icons) */
 .icon-fill { font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24; }
+
 /* Bloques de contraste para accesibilidad */
 .block-contrast { display: flex; gap: var(--space-2); flex-wrap: wrap; }
 .block-contrast .item { padding: 0.75rem 1rem; border-radius: var(--radius-1); }
+/* ===================*/
 
 /* ===================
  Responsive general 
@@ -354,9 +383,13 @@ Tabla responsive (móvil)
     display: block; margin-bottom: 0.25rem;
   }
 }
-
+/* ===================
+Autocenter con márgenes
+=================== */
 .autocenter {
   display: flex;
   align-items: center;     /* Centra verticalmente */
   justify-content: center; /* Centra horizontalmente */
+  margin: var(--space-2);  /* margen general */
+  margin-left: var(--space-4); /* margen extra a la izquierda */
 }
