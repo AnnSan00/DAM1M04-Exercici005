@@ -1,192 +1,269 @@
-/* === Reset y variables === */
-* { box-sizing: border-box; }
-html { font-size: 16px; }
+/* ===================
+Variables globales 
+=================== */
+/* Paleta, espacios, radios y sombras reutilizables */
+/* Root toca directamente el documento raiz(HTML)
+Dentro, crea las variables siguientes para no repetirlo todo el rato 
+y asi, ademas, garantiza que todo lo necesario tenga la misma paleta de colores*/
 :root {
-  --bg-dark: #0a0a0f;
-  --neon-pink: #ff2d95;
-  --neon-blue: #00f0ff;
-  --neon-green: #39ff14;
-  --neon-yellow: #faff00;
-  --navH: 64px;
+  
+  /* Colores */
+  --bg-dark: #0a0a0f;              /* Fondo base oscuro */
+  --neon-pink: #ff2d95;            /* Rosa neón */
+  --neon-blue: #00f0ff;            /* Azul neón */
+  --neon-green: #39ff14;           /* Verde neón */
+  --neon-yellow: #faff00;          /* Amarillo neón */
+  
+  /* Medidas */
+  --navH: 64px;                    /* Altura navbar -> Altura de la barra de navegación.*/
+  --pageMax: 1100px;               /* Ancho máximo del contenido */
 
-  --pageMax: 1100px;
-  --space-1: 0.5rem;
-  --space-2: 1rem;
-  --space-3: 1.5rem;
-  --space-4: 2rem;
+  /* Escala de espacios */
+  --space-1: 0.5rem;                /* separación muy pequeña (detalles, icono‑texto).*/ 
+  --space-2: 1rem;                  /* separación estándar (paddings en contenedores, botones, tarjetas). */
+  
+  --space-3: 1.5rem;                /* separación media (entre bloques o componentes). */
+  --space-4: 2rem;                  /* separación grande (entre secciones completas como hero y footer) */
 
-  --radius-1: 8px;
-  --radius-2: 16px;
+  --radius-1: 8px;                 /* Radios de borde para elementos pequeños */
+  --radius-2: 16px;                /*Radios de borde para elementos grandes o destacados */
 
-  --shadow-neon: 0 0 12px var(--neon-pink), 0 0 24px var(--neon-blue);
+  /* Sombra glow (resplandor) multicolor */
+  --shadow-neon:                   /* Nombre de la variable CSS. Se define en ":root" para poder reutilizarla en cualquier sitio del CSS*/
+    0 0 12px var(--neon-pink),     /* "0 0": desplazamiento horizontal y vertical -> "12px": radio de desenfoque -> "var(--neon-pink)": color de la sombra */
+    0 0 24px var(--neon-blue);     /* Lo mismo que arriba pero con el color azul*/
 }
 
-/* === Tipografías === */
+/* ===================
+Tipografía y texto
+=================== */
 body {
-  margin: 0;
-  color: var(--neon-blue);
-  background: var(--bg-dark) url("./assets/img/cyber-grid.png") center/cover fixed no-repeat;
-  font-family: "Orbitron", sans-serif;
-  line-height: 1.65;
+  margin: 0;                       /* Elimina el margen por defecto que los navegadores aplican al <body> */
+  font-family: "Orbitron", sans-serif; /* Fuente para texto general. Tipografía */
+  line-height: 1.65;               /* Ajusta la altura de línea (espacio vertical entre líneas de texto). */
+  color: var(--neon-blue);         /* Color de texto base */
+  background: var(--bg-dark)      /* Fondo con textura fija */
 }
-h1,h2,h3 {
-  font-family: "Share Tech Mono", monospace;
-  letter-spacing: 0.05em;
-  color: var(--neon-pink);
+
+h1, h2, h3 {
+  font-family: "Share Tech Mono", monospace; /* Fuente para títulos */
+  letter-spacing: 0.05em;          /* Separación sutil entre letras */
+  color: var(--neon-pink);         /* Color de titulares */
+  text-shadow: var(--shadow-neon); /* Efecto glow */
+}
+
+h1 { font-size: clamp(2rem, 4vw, 3rem); }       /* calmp(min: valor minimo preferido: el valor ideal max: valor maximo permitido) Tamaño fluido */
+h2 { font-size: clamp(1.5rem, 3vw, 2.25rem); }
+h3 { font-size: clamp(1.25rem, 2.5vw, 1.75rem); }
+p, li { font-size: clamp(1rem, 1.5vw, 1.125rem); color: var(--neon-green); } /* Aqui añade el color verde neon para los p y los li */
+
+/* ===================
+Enlaces
+=================== */
+a { color: var(--neon-yellow); text-decoration: none; } /* Aplica estilos a todos los enlaces */
+a:hover { color: var(--neon-pink); text-shadow: 0 0 8px var(--neon-pink); } /* Aplica estilos cuando el usuario pasa el ratón por encima del enlace con glow. Crea alrededor, cuando pasas por encima, un enlace que brilla en rosa*/
+
+/* ===================
+Layout general
+=================== */
+.container {
+  max-width: var(--pageMax);       /* Limita ancho de línea de contenido */
+  margin: 0 auto;                  /* Centra horizontalmente */
+  padding: 0 var(--space-2);       /* Respiro lateral base */
+}
+
+/* ===================
+Navbar (glass/frosted) 
+(Barra de navegacion)
+=================== */
+.navbar {
+  position: sticky; top: 0; z-index: 999;      /* Fijada arriba al hacer scroll y se asegura de estar por encima de otros elementos. */
+  height: var(--navH);                         /* la barra de navegación tendrá una altura fija de 64px, definida mediante una variable CSS reutilizable*/
+  display: flex; align-items: center;          /* */
+  background: rgba(10,10,15,0.6);            /* Fondo translúcido */
+  border-bottom: 2px solid var(--neon-pink);   /* Línea inferior */
+  box-shadow: 0 0 12px var(--neon-blue);       /* Glow inferior */
+  backdrop-filter: blur(6px);                  /* Efecto cristal borroso */
+  -webkit-backdrop-filter: blur(6px);          /* blur()el numero dentro del () es la intensidd del desenfoque */
+}
+
+.navbar .container {
+  display: flex; 
+  align-items: center; 
+  gap: var(--space-2); /* Distribuye marca y nav */
+}
+
+/* ====================================== */
+.brand {
+  display: flex; align-items: center; gap: 0.5rem; /* Logo + texto */
+  font-weight: 700; color: var(--neon-yellow);
   text-shadow: var(--shadow-neon);
 }
-h1 { font-size: clamp(2rem,4vw,3rem); }
-h2 { font-size: clamp(1.5rem,3vw,2.25rem); }
-h3 { font-size: clamp(1.25rem,2.5vw,1.75rem); }
-p,li { font-size: clamp(1rem,1.5vw,1.125rem); color: var(--neon-green); }
-
-/* Enlaces */
-a { color: var(--neon-yellow); text-decoration: none; }
-a:hover { color: var(--neon-pink); text-shadow: 0 0 8px var(--neon-pink); }
-
-/* Auto-center */
-.container { max-width: var(--pageMax); margin:0 auto; padding:0 var(--space-2); }
-
-/* === Navbar === */
-.navbar {
-  position: sticky; top:0; z-index:999;
-  height: var(--navH);
-  display:flex; align-items:center;
-  background: rgba(10,10,15,0.9);
-  border-bottom: 2px solid var(--neon-pink);
-  box-shadow: 0 0 12px var(--neon-blue);
+.nav { margin-left: auto; display: flex; gap: var(--space-2); } /* Empuja nav a la derecha */
+.nav a {
+  padding: 0.4rem 0.6rem;                        /* Click area */
+  border-radius: var(--radius-1);
+  transition: color 200ms ease, background 200ms ease, letter-spacing 200ms ease;
 }
-.navbar .container { display:flex; align-items:center; gap:var(--space-2); }
-.brand { display:flex; align-items:center; gap:0.5rem; font-weight:700; color:var(--neon-yellow); text-shadow: var(--shadow-neon); }
-.nav { margin-left:auto; display:flex; gap:var(--space-2); }
-.nav a { padding:0.4rem 0.6rem; border-radius:var(--radius-1); transition:all 200ms ease; }
-.nav a:hover { background:rgba(255,45,149,0.2); }
-.nav a.active { background:rgba(0,240,255,0.2); color:var(--neon-blue); }
+.nav a:hover { background: rgba(255,45,149,0.2); letter-spacing: 0.02em; } /* Feedback hover */
+.nav a.active { background: rgba(0,240,255,0.2); color: var(--neon-blue); } /* Página activa */
 
-/* Botón neon */
+/* ===================
+Botones
+=================== */
 .btn {
-  display:inline-flex; align-items:center; gap:0.4rem;
-  padding:0.65rem 1rem;
-  border:2px solid var(--neon-pink);
-  border-radius:var(--radius-1);
+  display: inline-flex; align-items: center; gap: 0.4rem; /* Icono + texto alineados */
+  padding: 0.65rem 1rem;             /* Tamaño cómodo */
+  border: 2px solid var(--neon-pink);
+  border-radius: var(--radius-1);
   color: var(--neon-yellow);
-  background: rgba(10,10,15,0.8);
-  box-shadow: var(--shadow-neon);
-  transition: transform 200ms ease, box-shadow 200ms ease;
+  background: rgba(10,10,15,0.8);    /* Fondo semi translúcido */
+  box-shadow: var(--shadow-neon);    /* Glow */
+  transition: transform 200ms ease, box-shadow 200ms ease, letter-spacing 200ms ease;
 }
-.btn:hover { transform:scale(1.05); box-shadow:0 0 20px var(--neon-green); }
+.btn:hover { transform: scale(1.05); box-shadow: 0 0 20px var(--neon-green); letter-spacing: 0.02em; }
 
-/* Hero */
+/* ===================
+Hero (primer bloque visual)
+=================== */
 .hero {
-  min-height:calc(60vh - var(--navH));
-  display:flex; align-items:center; justify-content:center;
-  text-align:center; padding:var(--space-4) 0;
-  background: linear-gradient(135deg, rgba(255,45,149,0.2), rgba(0,240,255,0.2));
+  min-height: calc(60vh - var(--navH)); /* Altura visible bajo navbar */
+  display: flex; align-items: center; justify-content: center;
+  text-align: center; padding: var(--space-4) 0;
+  background: linear-gradient(135deg,
+    rgba(255,45,149,0.2), rgba(0,240,255,0.2)); /* Velo neón sutil */
 }
-.hero .content { display:flex; flex-direction:column; gap:var(--space-2); }
+.hero .content { display: flex; flex-direction: column; gap: var(--space-2); }
 
-/* Tarjetas */
-.cards { display:flex; flex-wrap:wrap; gap:var(--space-2); }
+/* ===================
+Tarjetas (Transiciones)
+=================== */
+.cards { display: flex; flex-wrap: wrap; gap: var(--space-2); } /* Fila(s) flexibles */
 .card {
-  flex:1 1 300px;
-  border-radius:var(--radius-2);
-  overflow:hidden;
-  border:2px solid var(--neon-blue);
+  flex: 1 1 300px;                   /* Crece, mínima de 300px */
+  border-radius: var(--radius-2);
+  overflow: hidden;                  /* Recorta imagenes internas */
+  border: 2px solid var(--neon-blue);
   background: rgba(10,10,15,0.8);
   box-shadow: var(--shadow-neon);
-  display:flex; flex-direction:column;
-  transition: transform 300ms ease, box-shadow 300ms ease;
+  display: flex; flex-direction: column;
+  transition: transform 300ms ease, box-shadow 300ms ease, border-color 300ms ease;
 }
-.card:hover { transform:translateY(-6px) scale(1.02); box-shadow:0 0 24px var(--neon-pink); }
-.card .thumb { height:180px; overflow:hidden; }
-.card .thumb img { width:100%; height:100%; object-fit:cover; filter:brightness(0.8) saturate(1.2); }
-.card .body { padding:var(--space-2); color:var(--neon-green); }
+.card:hover {
+  transform: translateY(-6px) scale(1.02); /* Elevación sutil */
+  box-shadow: 0 0 24px var(--neon-pink);   /* Glow más fuerte */
+  border-color: var(--neon-pink);
+}
+.card .thumb { height: 180px; overflow: hidden; position: relative; } /* Caja de imagen */
+.card .thumb img {
+  position: absolute; inset: 0;      /* Ocupa toda la caja */
+  width: 100%; height: 100%;
+  object-fit: cover;                  /* Recorte limpio */
+  filter: brightness(0.8) saturate(1.2); /* Estiliza imagen */
+  transition: opacity 500ms ease;    /* Crossfade al hover */
+}
+.card .thumb img:not(.alt) { opacity: 1; z-index: 1; } /* Imagen principal visible */
+.card .thumb img.alt { opacity: 0; z-index: 2; }       /* Imagen alternativa oculta */
+.card:hover .thumb img.alt { opacity: 1; }             /* Muestra alternativa */
+.card:hover .thumb img:not(.alt) { opacity: 0; }       /* Oculta principal */
+.card .body { padding: var(--space-2); color: var(--neon-green); } /* Texto de la tarjeta */
 
-/* Loader cyberpunk: rueda digital */
+/* Timing functions por tarjeta (diferente sensación de aceleración) */
+.t-linear:hover   { transition-timing-function: linear; }     /* Constante */
+.t-ease-in:hover  { transition-timing-function: ease-in; }     /* Acelera al inicio */
+.t-ease-io:hover  { transition-timing-function: ease-in-out; } /* Suave inicio/fin */
+
+/* ===================
+Submenu (Transiciones)
+=================== */
+.submenu { display: flex; flex-wrap: wrap; gap: var(--space-2); } /* Lista horizontal responsive */
+.submenu a {
+  padding: 0.4rem 0.6rem;
+  border-radius: var(--radius-1);
+  color: var(--neon-yellow);
+  transition: color 200ms ease, letter-spacing 200ms ease, text-shadow 200ms ease;
+}
+.submenu a:hover {
+  color: var(--neon-pink);
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 8px var(--neon-pink);
+}
+
+/* ===================
+Animaciones
+=================== */
+/* Loader circular girando infinitamente */
 .loader {
   width: 90px; height: 90px;
   border-radius: 50%;
   border: 6px solid var(--neon-blue);
-  border-top-color: var(--neon-pink);
-  animation: spin 1.5s linear infinite;
+  border-top-color: var(--neon-pink);          /* Diferente color para el efecto */
+  animation: spin 1.5s linear infinite;        /* Rotación continua */
   margin: var(--space-3) auto;
   box-shadow: 0 0 12px var(--neon-green);
 }
 @keyframes spin { to { transform: rotate(360deg); } }
 
-/* Orbe digital */
+/* Orbe digital que rota y pulsa con cambio de color */
 .block-anim {
   width: 140px; height: 140px;
   border-radius: 50%;
   background: var(--neon-pink);
   margin: var(--space-3) auto;
-  animation: pulseSpin 2s ease-in-out infinite alternate;
+  animation: pulseSpin 2s ease-in-out infinite alternate; /* Va y vuelve */
 }
 @keyframes pulseSpin {
-  0% { transform:scale(1) rotate(0deg); background:var(--neon-pink); }
-  50% { transform:scale(1.1) rotate(180deg); background:var(--neon-blue); }
-  100% { transform:scale(1.2) rotate(360deg); background:var(--neon-green); }
+  0%   { transform: scale(1)   rotate(0deg);   background: var(--neon-pink); }
+  50%  { transform: scale(1.1) rotate(180deg); background: var(--neon-blue); }
+  100% { transform: scale(1.2) rotate(360deg); background: var(--neon-green); }
 }
 
-/* Scroll reveal */
-.reveal { opacity:0; transform:translateY(30px); background:rgba(10,10,15,0.8); border:2px solid var(--neon-yellow); border-radius:var(--radius-2); padding:var(--space-2); box-shadow:var(--shadow-neon); }
-.reveal.reveal-1 { animation: fadeUp 1s ease both; }
-.reveal.reveal-2 { animation: fadeUp 1.4s ease both; }
-.reveal.reveal-3 { animation: fadeUp 1.8s ease both; }
-@keyframes fadeUp { from {opacity:0; transform:translateY(30px);} to {opacity:1; transform:translateY(0);} }
-
-/* Sello neon */
+/* Sello / pulso neón alternado */
 .alt-anim {
   width: 80px; height: 80px; margin: var(--space-2) auto;
-  border-radius:50%;
+  border-radius: 50%;
   background: var(--neon-yellow);
-  animation: pulse 1.2s ease-in-out infinite alternate;
-  box-shadow:0 0 12px var(--neon-pink);
+  animation: pulse 1.2s ease-in-out infinite alternate; /* Pulso suave */
+  box-shadow: 0 0 12px var(--neon-pink);
 }
 @keyframes pulse {
-  0% { transform:scale(1); opacity:0.7; }
-  100% { transform:scale(1.2); opacity:1; }
+  0%   { transform: scale(1);   opacity: 0.7; }
+  100% { transform: scale(1.2); opacity: 1; }
 }
 
-/* Responsive */
-@media (max-width:768px) {
-  .container { padding:0 var(--space-3); }
-  .cards { flex-direction:column; }
-  .hero { min-height:calc(50vh - var(--navH)); }
+/* ===================
+Scroll reveal + fallback
+=================== */
+/* Estado base oculto y desplazado hacia abajo */
+.reveal {
+  opacity: 0; transform: translateY(30px);
+  background: rgba(10,10,15,0.8);
+  border: 2px solid var(--neon-yellow);
+  border-radius: var(--radius-2);
+  padding: var(--space-2);
+  box-shadow: var(--shadow-neon);
 }
-/* Ocultar la imagen alternativa por defecto */
-.card .thumb {
-  position: relative; /* necesario para superponer */
+/* Animación de entrada vertical */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
-.card .thumb img {
-  position: absolute;
-  inset: 0; /* ocupa todo el contenedor */
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: opacity 0.5s ease;
+/* Versión moderna: sincroniza animación con la vista (scroll) */
+@supports (animation-timeline: view()) {
+  .reveal {
+    animation: fadeUp 1s ease both;       /* Aparece y se mantiene en estado final */
+    animation-timeline: view();           /* Ligada al scroll/viewport */
+    animation-range: entry 0% cover 40%;  /* Desde que entra hasta cubrir el 40% */
+  }
 }
-
-/* La imagen principal visible al inicio */
-.card .thumb img:not(.alt) {
-  opacity: 1;
-  z-index: 1;
-}
-
-/* La imagen alternativa oculta al inicio */
-.card .thumb img.alt {
-  opacity: 0;
-  z-index: 2;
-}
-
-/* Al hacer hover, la alternativa aparece y la principal se desvanece */
-.card:hover .thumb img.alt {
-  opacity: 1;
-}
-.card:hover .thumb img:not(.alt) {
-  opacity: 0;
+/* Fallback: si no hay soporte, animación normal por tiempo */
+@supports not (animation-timeline: view()) {
+  .reveal { animation: fadeUp 1s ease both; }
 }
 
+/* ===================
+Footer
+=================== */
 .footer {
   background: rgba(10,10,15,0.9);
   border-top: 2px solid var(--neon-pink);
@@ -196,39 +273,90 @@ a:hover { color: var(--neon-pink); text-shadow: 0 0 8px var(--neon-pink); }
   margin-top: var(--space-4);
 }
 .footer .social {
-  display: flex;
-  justify-content: center;
-  gap: var(--space-2);
+  display: flex; justify-content: center; gap: var(--space-2);
   margin-top: var(--space-1);
 }
-.footer a {
-  color: var(--neon-yellow);
-  transition: color 200ms ease;
-}
-.footer a:hover {
-  color: var(--neon-pink);
-}
+.footer a { color: var(--neon-yellow); transition: color 200ms ease; }
+.footer a:hover { color: var(--neon-pink); }
 
-/* Tabla de colores */
+/* ===================
+Tabla (desktop)
+=================== */
+/* Tabla estilizada para la guía de colores */
 .table {
   width: 100%;
-  border-collapse: separate;   /* permite separar filas */
-  border-spacing: 0 1rem;      /* espacio vertical entre filas */
+  border-collapse: separate;       /* Permite espaciar filas */
+  border-spacing: 0 1rem;          /* Espacio vertical entre filas */
   margin-top: var(--space-3);
 }
-
 .table th, .table td {
-  padding: 0.75rem 1.25rem;    /* más aire dentro de cada celda */
+  padding: 0.75rem 1.25rem;
   border: 1px solid var(--neon-blue);
   text-align: left;
 }
-
 .table th {
   background: rgba(0,240,255,0.2);
   color: var(--neon-yellow);
   font-weight: 600;
 }
-
 .table tbody tr:nth-child(even) {
-  background: rgba(255,45,149,0.08); /* alterna filas con un tono suave */
+  background: rgba(255,45,149,0.08); /* Zebra sutil */
+}
+
+/* ===================
+Utilidades de guía d’estil
+=================== */
+/* Alinear iconos y texto en baseline para ejemplo */
+.sample-row { display: flex; align-items: baseline; gap: var(--space-2); }
+/* Tamaños de icono para demostración */
+.icon-lg { font-size: 32px; }
+.icon-xl { font-size: 40px; }
+/* Icono relleno (variaciones de Material Icons) */
+.icon-fill { font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24; }
+/* Bloques de contraste para accesibilidad */
+.block-contrast { display: flex; gap: var(--space-2); flex-wrap: wrap; }
+.block-contrast .item { padding: 0.75rem 1rem; border-radius: var(--radius-1); }
+
+/* ===================
+ Responsive general 
+ =================== */
+@media (max-width: 768px) {
+  .container { padding: 0 var(--space-3); }  /* Más respiro lateral en móvil */
+  .cards { flex-direction: column; }         /* Tarjetas apiladas */
+  .hero { min-height: calc(50vh - var(--navH)); } /* Hero un poco más compacto */
+  .nav { gap: var(--space-1); }              /* Espacio más ajustado en navbar */
+}
+
+/* ===================
+Tabla responsive (móvil)
+ =================== */
+/* Convierte la tabla en bloques con etiquetado por data-label */
+@media (max-width: 600px) {
+  .table, .table thead, .table tbody, .table th, .table td, .table tr {
+    display: block; width: 100%;
+  }
+  .table thead { display: none; }            /* Oculta cabecera en móvil */
+  .table tr {
+    margin-bottom: 1.5rem;
+    border: 2px solid var(--neon-pink);
+    border-radius: var(--radius-1);
+    padding: var(--space-2);
+    background: rgba(10,10,15,0.8);
+    box-shadow: var(--shadow-neon);
+  }
+  .table td {
+    border: none; padding: 0.5rem 0;
+    text-align: left; position: relative;
+  }
+  .table td::before {
+    content: attr(data-label);               /* Etiqueta de cada campo */
+    font-weight: 600; color: var(--neon-yellow);
+    display: block; margin-bottom: 0.25rem;
+  }
+}
+
+.autocenter {
+  display: flex;
+  align-items: center;     /* Centra verticalmente */
+  justify-content: center; /* Centra horizontalmente */
 }

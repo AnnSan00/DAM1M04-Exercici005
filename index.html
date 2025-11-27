@@ -2,111 +2,96 @@
 <html lang="ca">
 <head>
   <meta charset="UTF-8">
-  <title>Night City Net · Home</title>
+  <title>Night City Net · Galeria</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Share+Tech+Mono&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
   <!-- Material Icons Outlined -->
-  <link rel="stylesheet"href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24..48,400..700,0..1,0..200" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24..48,400..700,0..1,0..200" />
   <link rel="stylesheet" href="estils.css">
 </head>
 <body>
-<header class="navbar">
-  <div class="container">
-    <a class="brand" href="index.html">
-      <span class="material-symbols-outlined">hub</span>
-      Night City Net
-    </a>
-    <nav class="nav">
-      <a class="active" href="index.html"><span class="material-symbols-outlined">home</span>Home</a>
-      <a href="galeria.html"><span class="material-symbols-outlined">movie</span>Galeria</a>
-      <a href="guia-estil.html"><span class="material-symbols-outlined">style</span>Guia d’estil</a>
-    </nav>
-  </div>
-</header>
-
-<main>
-  <!-- Hero -->
-  <section class="hero">
-    <div class="container content">
-      <h1>Connecta’t al cor de Night City</h1>
-      <p>Interfícies neon, fluxos de dades i contractes de fixers. Benvingut/da.</p>
-      <a class="btn" href="galeria.html">
-        <span class="material-symbols-outlined">explore</span>
-        Entrar a la xarxa
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container">
+      <a class="brand" href="index.html">
+        <span class="material-symbols-outlined">hub</span>
+        Night City Net
       </a>
+      <nav class="nav" aria-label="Principal">
+        <a href="index.html"><span class="material-symbols-outlined">home</span>Home</a>
+        <a class="active" href="galeria.html" aria-current="page"><span class="material-symbols-outlined">movie</span>Galeria</a>
+        <a href="guia-estil.html"><span class="material-symbols-outlined">style</span>Guia d’estil</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Intro -->
+  <section class="hero">
+    <div class="content">
+      <h1>Galeria d’Animacions</h1>
+      <p>Explora els efectes visuals i transicions CSS inspirats en Night City</p>
     </div>
   </section>
 
-  <!-- Targetes interactives -->
-  <section class="container" style="padding: 2rem 0;">
-    <h2>Targetes interactives</h2>
-    <p>Hover per canviar color, ombra, escala i imatge. Cada targeta té el seu tempo.</p>
+  <!-- Contingut principal -->
+  <main class="container" style="padding:2rem 0;">
+    <!-- Loader -->
+    <section aria-labelledby="loader-title">
+      <h2 id="loader-title">Loader digital</h2>
+      <p>Carregant dades de la xarxa de Night City…</p>
+      <div class="loader" aria-label="Càrrega"></div>
+    </section>
 
-    <div class="cards">
-      <!-- linear -->
-      <article class="card t-linear">
-        <div class="thumb">
-          <img src="./assets/img/arasakaicon.webp" alt="Panell corporatiu Arasaka">
-          <img class="alt" src="./assets/img/arasaka2.png" alt="Terminal de dades">
-        </div>
-        <div class="body">
-          <h3>Arasaka Terminal</h3>
-          <p>Accés constant a dades corporatives (linear).</p>
-        </div>
+    <!-- Orbe -->
+    <section aria-labelledby="orbe-title">
+      <h2 id="orbe-title">Orbe de NetWatch</h2>
+      <p>Flux constant de vigilància digital amb rotació i canvi de color.</p>
+      <div class="block-anim" aria-label="Orbe digital"></div>
+
+      <h3>Pols neon</h3>
+      <p>Animació alternate + infinite</p>
+      <div class="alt-anim" aria-label="Pols neon"></div>
+    </section>
+
+    <!-- Scroll reveal -->
+    <section aria-labelledby="reveal-title" style="margin-top: 2rem;">
+      <h2 id="reveal-title">Scroll reveal</h2>
+      <p>Cada bloc es revela al entrar a pantalla. Inclou fallback si no es suporta.</p>
+
+      <article class="reveal reveal-1">
+        <h3>Torres corporatives</h3>
+        <p>Gratacels amb antenes i panells hologràfics.</p>
+        <img src="./assets/img/torres.png" alt="Torres neon" style="width:100%; border-radius:12px;">
       </article>
 
-      <!-- ease-in -->
-      <article class="card t-ease-in">
-        <div class="thumb">
-          <img src="./assets/img/calle_neon.jpg" alt="Carrer neon">
-          <img class="alt" src="./assets/img/black_market.png" alt="Mercat Negre">
-        </div>
-        <div class="body">
-          <h3>Mercat Negre</h3>
-          <p>Entrada suau a transaccions clandestines (ease-in).</p>
-        </div>
+      <article class="reveal reveal-2" style="margin-top: 1rem;">
+        <h3>Japantown — Flux de dades</h3>
+        <p>Canals visuals que travessen la ciutat.</p>
+        <video autoplay loop muted playsinline src="./assets/media/japantawn.mp4" controls style="width:100%; border-radius:12px;"></video>
       </article>
 
-      <!-- ease-in-out -->
-      <article class="card t-ease-io">
-        <div class="thumb">
-          <img src="./assets/img/dron1.png" alt="Dron Militech">
-          <img class="alt" src="./assets/img/dron2.jpg" alt="Patrulla dron">
-        </div>
-        <div class="body">
-          <h3>Unitat DR-7</h3>
-          <p>Ritme equilibrat de patrulla (ease-in-out).</p>
-        </div>
+      <article class="reveal reveal-3" style="margin-top: 1rem;">
+        <h3>Afterlife Club</h3>
+        <p>Cartells dinàmics i llum vermella al beat.</p>
+        <video autoplay loop muted playsinline src="./assets/media/afterlife.mp4" controls style="width:100%; border-radius:12px;"></video>
       </article>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>© 2025 Night City Net · Projecte DAM1M04-Exercici005</p>
+      <nav class="social" aria-label="Social">
+        <a href="#"><span class="material-symbols-outlined">public</span>Web</a>
+        <a href="#"><span class="material-symbols-outlined">mail</span>Email</a>
+        <a href="#"><span class="material-symbols-outlined">group</span>Comunitat</a>
+      </nav>
+      <p class="credits">Dissenyat amb CSS pur · Fonts de Google · Material Icons</p>
     </div>
-  </section>
-
-  <!-- Menú secundari -->
-  <section class="container" style="padding-bottom: 2rem;">
-    <h2>Menú secundari</h2>
-    <p>Només estil: transició de color i letter-spacing.</p>
-    <nav class="submenu">
-      <a href="#">Contractes</a>
-      <a href="#">Mapa Night City</a>
-      <a href="#">Fixers</a>
-      <a href="#">Clubs</a>
-      <a href="#">Implants</a>
-    </nav>
-  </section>
-</main>
-<footer class="footer">
-  <div class="container">
-    <p>© 2025 Night City Net · Projecte DAM1M04-Exercici005</p>
-    <nav class="social">
-      <a href="#"><span class="material-symbols-outlined">public</span>Web</a>
-      <a href="#"><span class="material-symbols-outlined">mail</span>Email</a>
-      <a href="#"><span class="material-symbols-outlined">group</span>Comunitat</a>
-    </nav>
-  </div>
-</footer>
-
+  </footer>
 </body>
 </html>
