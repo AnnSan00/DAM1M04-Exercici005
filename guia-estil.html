@@ -1,128 +1,112 @@
 <!doctype html>
-<html lang="es">
+<html lang="ca">
 <head>
   <meta charset="UTF-8">
-  <title>Guía de estilo · Reino </title>
+  <title>Night City Net · Guia d’estil</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <!-- Fonts -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <!-- Material Symbols Outlined -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24..48,300..700,0..1,0..200"/>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Share+Tech+Mono&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <!-- Material Icons Outlined -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24..48,400..700,0..1,0..200" />
   <link rel="stylesheet" href="estils.css">
 </head>
 <body>
-
-<header class="navbar">
-  <div class="container">
-    <a class="brand" href="index.html">
-      <span class="material-symbols-outlined">castle</span>
-      Reino 
-    </a>
-    <nav class="nav">
-      <a href="index.html"><span class="material-symbols-outlined">home</span>Home</a>
-      <a href="galeria.html"><span class="material-symbols-outlined">photo_library</span>Galería</a>
-      <a class="active" href="guia-estil.html"><span class="material-symbols-outlined">menu_book</span>Guía de estilo</a>
-    </nav>
-  </div>
-</header>
-
-<main class="container" style="padding: 2rem 0;">
-  <h1>Muestrario tipográfico</h1>
-  <section class="scale">
-    <h1>Título H1 (Cinzel 700)</h1>
-    <h2>Título H2 (Cinzel 600)</h2>
-    <h3>Título H3 (Cinzel 500)</h3>
-    <p>Texto base (Crimson Pro 400) con <strong>line-height</strong> amplio y <em>letter-spacing</em> sutil. Mínimo recomendado de 1rem para legibilidad, aquí 1.125rem.</p>
-  </section>
-
-  <section style="margin-top: 1.5rem;">
-    <h2>Alineación a baseline con iconos</h2>
-    <div class="sample-row">
-      <span class="material-symbols-outlined">sword</span>
-      <p>Espadas y escudos —alineados en la misma línea base.</p>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container">
+      <a class="brand" href="index.html"><span class="material-symbols-outlined">hub</span> Night City Net</a>
+      <nav class="nav">
+        <a href="index.html"><span class="material-symbols-outlined">home</span>Home</a>
+        <a href="galeria.html"><span class="material-symbols-outlined">movie</span>Galeria</a>
+        <a class="active" href="guia-estil.html"><span class="material-symbols-outlined">style</span>Guia d’estil</a>
+      </nav>
     </div>
-    <div class="sample-row">
-      <span class="material-symbols-outlined icon-lg">shield</span>
-      <p>Variando tamaño (opsz) y peso (wght) sin romper la línea.</p>
-    </div>
-    <div class="sample-row">
-      <span class="material-symbols-outlined icon-xl">magic_button</span>
-      <p>Icono XL y texto fluyen sobre la misma baseline.</p>
+  </header>
+
+  <!-- Hero Intro -->
+  <section class="hero hero-small">
+    <div class="content">
+      <h1>Guia d’estil</h1>
+      <p>Fonts, icones i paleta de colors de Night City Net</p>
     </div>
   </section>
 
-  <section style="margin-top: 1.5rem;">
-    <h2>Material Icons — muestrario</h2>
-    <p>Outlined con ejes variables: <code>opsz</code>, <code>wght</code>, <code>FILL</code>.</p>
-    <div class="sample-row">
-      <span class="material-symbols-outlined">map</span>
-      <span class="material-symbols-outlined" style='font-variation-settings:"FILL" 1,"wght" 400,"GRAD" 0,"opsz" 24;'>map</span>
-      <span class="material-symbols-outlined" style='font-variation-settings:"FILL" 0,"wght" 700,"GRAD" 0,"opsz" 36; font-size:36px;'>map</span>
+  <!-- Contingut principal -->
+  <main class="container" style="padding:2rem 0;">
+    <!-- Tipografia -->
+    <section class="scale">
+      <h2>Mostrari tipogràfic</h2>
+      <h1>Títol H1 (Orbitron 700)</h1>
+      <h2>Títol H2 (Orbitron 600)</h2>
+      <h3>Títol H3 (Orbitron 500)</h3>
+      <p>Text base (Inter 400) amb line-height ampli i letter-spacing subtil. Mida mínima recomanada 1rem; aquí 1.125rem.</p>
+    </section>
+
+    <!-- Baseline amb icones -->
+    <section>
+      <h2>Alineació a baseline amb icones</h2>
+      <div class="sample-row"><span class="material-symbols-outlined">wifi</span><p>Connexió segura NetWatch</p></div>
+      <div class="sample-row"><span class="material-symbols-outlined icon-lg">shield_person</span><p>Protecció corporativa Arasaka</p></div>
+      <div class="sample-row"><span class="material-symbols-outlined icon-xl">memory</span><p>Implant actiu i monitoritzat</p></div>
+    </section>
+
+    <!-- Material Icons -->
+    <section>
+      <h2>Material Icons — Muestrari</h2>
+      <p>Outlined amb eixos variables: opsz, wght, FILL.</p>
+      <div class="sample-row">
+        <span class="material-symbols-outlined">map</span>
+        <span class="material-symbols-outlined" style='font-variation-settings:"FILL" 1,"wght" 400,"GRAD" 0,"opsz" 24;'>map</span>
+        <span class="material-symbols-outlined" style='font-variation-settings:"FILL" 0,"wght" 700,"GRAD" 0,"opsz" 36; font-size:36px;'>map</span>
+      </div>
+      <p>Botons amb icona + text:</p>
+      <div class="sample-row">
+        <a class="btn" href="#"><span class="material-symbols-outlined">travel_explore</span>Mapa Night City</a>
+        <a class="btn" href="#"><span class="material-symbols-outlined icon-fill">storefront</span>Mercat Negre</a>
+      </div>
+    </section>
+
+    <!-- Accessibilitat -->
+    <section>
+      <h2>Accessibilitat: contrast i mida mínima</h2>
+      <div class="block-contrast">
+        <div class="item" style="background:#0a0a0f; color:#d9e7ff;">Text base sobre fons fosc — alt contrast</div>
+        <div class="item" style="background:#00f0ff; color:#0a0a0f;">Neon blue sobre fosc — llegible</div>
+        <div class="item" style="background:#ff2d95; color:#0a0a0f;">Neon pink sobre fosc — llegible</div>
+      </div>
+      <p>Usa mides de text ≥ 1rem i line-height ≥ 1.5; evita paràgrafs llargs amb baixa opacitat.</p>
+    </section>
+
+    <!-- Colors -->
+    <section>
+      <h2>Colors del sistema</h2>
+      <table class="table">
+        <thead>
+          <tr><th>Nom</th><th>HEX</th><th>RGB</th><th>HSL</th><th>Alpha</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Neon Pink</td><td>#ff2d95</td><td>rgb(255,45,149)</td><td>hsl(328,100%,59%)</td><td>rgba(255,45,149,0.6)</td></tr>
+          <tr><td>Neon Blue</td><td>#00f0ff</td><td>rgb(0,240,255)</td><td>hsl(184,100%,50%)</td><td>rgba(0,240,255,0.6)</td></tr>
+          <tr><td>Neon Green</td><td>#39ff14</td><td>rgb(57,255,20)</td><td>hsl(109,100%,54%)</td><td>rgba(57,255,20,0.6)</td></tr>
+          <tr><td>Neon Yellow</td><td>#faff00</td><td>rgb(250,255,0)</td><td>hsl(61,100%,50%)</td><td>rgba(250,255,0,0.6)</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>© 2025 Night City Net · Projecte DAM1M04-Exercici005</p>
+      <nav class="social">
+        <a href="#"><span class="material-symbols-outlined">public</span>Web</a>
+        <a href="#"><span class="material-symbols-outlined">mail</span>Email</a>
+        <a href="#"><span class="material-symbols-outlined">group</span>Comunitat</a>
+      </nav>
+      <p class="credits">Dissenyat amb Google Fonts & Material Icons</p>
     </div>
-
-    <p style="margin-top: 1rem;">Botones y links con icono + texto (hover con transición):</p>
-    <div class="sample-row">
-      <a class="btn" href="#">
-        <span class="material-symbols-outlined">travel_explore</span>
-        Mapa del reino
-      </a>
-      <a class="btn" href="#">
-        <span class="material-symbols-outlined icon-fill">local_drink</span>
-        Taberna
-      </a>
-    </div>
-  </section>
-
-  <section style="margin-top: 1.5rem;">
-    <h2>Accesibilidad: contraste y tamaño mínimo</h2>
-    <div class="block-contrast">
-      <div class="item" style="background:#2b1d16; color:#f3efe5;">Ink #2b1d16 sobre papel —alto contraste</div>
-      <div class="item" style="background:#c9a646; color:#2b1d16;">Gold #c9a646 sobre ink —legible</div>
-      <div class="item" style="background:#7b2d2d; color:#f3efe5;">Crimson #7b2d2d sobre papel —legible</div>
-    </div>
-    <p>Usa tamaños de texto ≥ 1rem y line-height ≥ 1.5 para párrafos; evita textos largos en baja opacidad.</p>
-  </section>
-
-  <section style="margin-top: 1.5rem;">
-    <h2>Colores del sistema</h2>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Nombre</th>
-          <th>HEX</th>
-          <th>RGB</th>
-          <th>HSL</th>
-          <th>Alpha</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Ink</td>
-          <td>#2b1d16</td>
-          <td>rgb(43, 29, 22)</td>
-          <td>hsl(20, 32%, 13%)</td>
-          <td>rgba(43, 29, 22, 0.8)</td>
-        </tr>
-        <tr>
-          <td>Gold</td>
-          <td>#c9a646</td>
-          <td>rgb(201, 166, 70)</td>
-          <td>hsl(44, 53%, 53%)</td>
-          <td>rgba(201, 166, 70, 0.6)</td>
-        </tr>
-        <tr>
-          <td>Crimson</td>
-          <td>#7b2d2d</td>
-          <td>rgb(123, 45, 45)</td>
-          <td>hsl(0, 46%, 33%)</td>
-          <td>rgba(123, 45, 45, 0.7)</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
-</main>
-
+  </footer>
 </body>
 </html>
