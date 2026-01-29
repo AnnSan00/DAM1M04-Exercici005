@@ -1,0 +1,419 @@
+/* ===================
+Variables globales 
+=================== */
+/* Paleta, espacios, radios y sombras reutilizables */
+/* Root toca directamente el documento raiz(HTML)
+Dentro, crea las variables siguientes para no repetirlo todo el rato 
+y asi, ademas, garantiza que todo lo necesario tenga la misma paleta de colores*/
+:root {
+  
+  /* Colores */
+  --bg-dark: #0a0a0f;              /* Fondo base oscuro */
+  --neon-pink: #ff2d95;            /* Rosa neón */
+  --neon-blue: #00f0ff;            /* Azul neón */
+  --neon-green: #39ff14;           /* Verde neón */
+  --neon-yellow: #faff00;          /* Amarillo neón */
+  
+  /* Medidas */
+  --navH: 64px;                    /* Altura navbar -> Altura de la barra de navegación.*/
+  --pageMax: 1100px;               /* Ancho máximo del contenido */
+
+  /* Escala de espacios */
+  --space-1: 0.5rem;                /* separación muy pequeña (detalles, icono‑texto).*/ 
+  --space-2: 1rem;                  /* separación estándar (paddings en contenedores, botones, tarjetas). */
+  
+  --space-3: 1.5rem;                /* separación media (entre bloques o componentes). */
+  --space-4: 2rem;                  /* separación grande (entre secciones completas como hero y footer) */
+
+  --radius-1: 8px;                 /* Radios de borde para elementos pequeños */
+  --radius-2: 16px;                /*Radios de borde para elementos grandes o destacados */
+
+  /* Sombra glow (resplandor) multicolor */
+  --shadow-neon:                   /* Nombre de la variable CSS. Se define en ":root" para poder reutilizarla en cualquier sitio del CSS*/
+    0 0 12px var(--neon-pink),     /* "0 0": desplazamiento horizontal y vertical -> "12px": radio de desenfoque -> "var(--neon-pink)": color de la sombra */
+    0 0 24px var(--neon-blue);     /* Lo mismo que arriba pero con el color azul*/
+}
+
+/* ===================
+Tipografía y texto
+=================== */
+body {
+  margin: 0;                       /* Elimina el margen por defecto que los navegadores aplican al <body> */
+  font-family: "Orbitron", sans-serif; /* Fuente para texto general. Tipografía */
+  line-height: 1.65;               /* Ajusta la altura de línea (espacio vertical entre líneas de texto). */
+  color: var(--neon-blue);         /* Color de texto base */
+  background: var(--bg-dark)      /* Fondo con textura fija */
+}
+
+h1, h2, h3 {
+  font-family: "Share Tech Mono", monospace; /* Fuente para títulos */
+  letter-spacing: 0.05em;          /* Separación sutil entre letras */
+  color: var(--neon-pink);         /* Color de titulares */
+  text-shadow: var(--shadow-neon); /* Efecto glow */
+}
+
+h1 { font-size: clamp(2rem, 4vw, 3rem); }       /* calmp(min: valor minimo preferido: el valor ideal max: valor maximo permitido) Tamaño fluido */
+h2 { font-size: clamp(1.5rem, 3vw, 2.25rem); }
+h3 { font-size: clamp(1.25rem, 2.5vw, 1.75rem); }
+p, li { font-size: clamp(1rem, 1.5vw, 1.125rem); color: var(--neon-green); } /* Aqui añade el color verde neon para los p y los li */
+
+/* ===================
+Enlaces
+=================== */
+a { color: var(--neon-yellow); text-decoration: none; } /* Aplica estilos a todos los enlaces */
+a:hover { color: var(--neon-pink); text-shadow: 0 0 8px var(--neon-pink); } /* Aplica estilos cuando el usuario pasa el ratón por encima del enlace con glow. Crea alrededor, cuando pasas por encima, un enlace que brilla en rosa*/
+
+/* ===================
+Layout general
+=================== */
+.container {
+  max-width: var(--pageMax);       /* Limita ancho de línea de contenido */
+  margin: 0 auto;                  /* Centra horizontalmente */
+  padding: 0 var(--space-2);       /* Respiro lateral base */
+}
+
+/* ===================
+Navbar (glass/frosted) 
+(Barra de navegacion)
+=================== */
+.navbar {
+  position: sticky; top: 0; z-index: 999;      /* Fijada arriba al hacer scroll y se asegura de estar por encima de otros elementos. */
+  height: var(--navH);                         /* la barra de navegación tendrá una altura fija de 64px, definida mediante una variable CSS reutilizable*/
+  display: flex; align-items: center;          /* */
+  background: rgba(10,10,15,0.6);            /* Fondo translúcido */
+  border-bottom: 2px solid var(--neon-pink);   /* Línea inferior */
+  box-shadow: 0 0 12px var(--neon-blue);       /* Glow inferior */
+  backdrop-filter: blur(6px);                  /* Efecto cristal borroso */
+  -webkit-backdrop-filter: blur(6px);          /* blur()el numero dentro del () es la intensidd del desenfoque */
+}
+
+.navbar .container {
+  display: flex;        /* convierte el .container en un contenedor flexbox. */
+  align-items: center;  /* alinea los elemntos verticalmente */
+  gap: var(--space-2); /* Distribuye marca y nav */
+}
+
+/* ====================================== */
+.brand {
+  display: flex; align-items: center; gap: 0.5rem; /* Logo + texto */
+  font-weight: 700; color: var(--neon-yellow);
+  text-shadow: var(--shadow-neon);    /* aplica un efecto de sombra al texto*/
+}
+
+/* ===================
+Nav / Sticky
+(Barra de navegacion)
+=================== */
+.nav { 
+  /* Empuja nav a la derecha */
+  margin-left: auto; 
+  display: flex; 
+  gap: var(--space-2); /* añade un espacio uniforme entre cada enlace de navegación*/
+} 
+
+.nav a {
+  padding: 0.4rem 0.6rem;                        /* amplía el área clicable de cada enlace, dándole espacio vertical y horizontal */
+  border-radius: var(--radius-1);
+  transition: color 200ms ease, background 200ms ease, letter-spacing 200ms ease;   /*añade animaciones suaves al cambiar color, fondo o espaciado de letras.*/
+}
+
+.nav a:hover { background: rgba(255,45,149,0.2); letter-spacing: 0.02em; } /* Feedback hover */
+/* */
+.nav a.active { background: rgba(0,240,255,0.2); color: var(--neon-blue); } /* Página activa */
+/* el enlace activo (la página en la que estás) se resalta con un fondo azul translúcido. además, el texto se vuelve azul neón.que indica qué sección está seleccionada o abierta.*/
+
+/* ===================
+Botones
+=================== */
+.btn {
+  display: inline-flex; align-items: center; gap: 0.4rem; /* Icono + texto alineados */
+  padding: 0.65rem 1rem;             /* Tamaño cómodo */
+  border: 2px solid var(--neon-pink);
+  border-radius: var(--radius-1);
+  color: var(--neon-yellow);
+  background: rgba(10,10,15,0.8);    /* Fondo semi translúcido */
+  box-shadow: var(--shadow-neon);    /* Glow */
+  transition: transform 200ms ease, box-shadow 200ms ease, letter-spacing 200ms ease;
+}
+.btn:hover { transform: scale(1.05); box-shadow: 0 0 20px var(--neon-green); letter-spacing: 0.02em; }
+
+/* ===================
+Hero (primer bloque visual)
+=================== */
+.hero {
+  min-height: calc(60vh - var(--navH)); /* Altura visible bajo navbar */
+  display: flex; align-items: center; justify-content: center;
+  text-align: center; padding: var(--space-4) 0;
+  background: linear-gradient(135deg,
+    rgba(255,45,149,0.2), rgba(0,240,255,0.2)); /* Velo neón sutil */
+}
+.hero .content { display: flex; flex-direction: column; gap: var(--space-2); }
+
+/* ===================
+Tarjetas (Transiciones)
+=================== */
+.cards { display: flex; flex-wrap: wrap; gap: var(--space-2); } /* Fila(s) flexibles */
+.card {
+  flex: 1 1 300px;                   /* Crece, mínima de 300px */
+  border-radius: var(--radius-2);
+  overflow: hidden;                  /* Recorta imagenes internas */
+  border: 2px solid var(--neon-blue);
+  background: rgba(10,10,15,0.8);
+  box-shadow: var(--shadow-neon);
+  display: flex; flex-direction: column;
+  transition: transform 300ms ease, box-shadow 300ms ease, border-color 300ms ease;
+}
+.card:hover {
+  transform: translateY(-6px) scale(1.02); /* Elevación sutil */
+  box-shadow: 0 0 24px var(--neon-pink);   /* Glow más fuerte */
+  border-color: var(--neon-pink);
+}
+.card .thumb { height: 180px; overflow: hidden; position: relative; } /* Caja de imagen */
+.card .thumb img {
+  position: absolute; inset: 0;      /* Ocupa toda la caja */
+  width: 100%; height: 100%;
+  object-fit: cover;                  /* Recorte limpio */
+  filter: brightness(0.8) saturate(1.2); /* Estiliza imagen */
+  transition: opacity 500ms ease;    /* Crossfade al hover */
+}
+.card .thumb img:not(.alt) { opacity: 1; z-index: 1; } /* Imagen principal visible */
+.card .thumb img.alt { opacity: 0; z-index: 2; }       /* Imagen alternativa oculta */
+.card:hover .thumb img.alt { opacity: 1; }             /* Muestra alternativa */
+.card:hover .thumb img:not(.alt) { opacity: 0; }       /* Oculta principal */
+.card .body { padding: var(--space-2); color: var(--neon-green); } /* Texto de la tarjeta */
+
+/* Animación base ya la tienes en .card:hover */
+
+
+/* Timing functions por tarjeta (diferente sensación de aceleración) */
+.t-linear:hover   { transition-timing-function: linear; }     /* Constante */
+.t-ease-in:hover  { transition-timing-function: ease-in; }     /* Acelera al inicio */
+.t-ease-io:hover  { transition-timing-function: ease-in-out; } /* Suave inicio/fin */
+
+/* ===================
+Submenu (Transiciones)
+=================== */
+.submenu { display: flex; flex-wrap: wrap; gap: var(--space-2); } /* Lista horizontal responsive */
+.submenu a {
+  padding: 0.4rem 0.6rem;
+  border-radius: var(--radius-1);
+  color: var(--neon-yellow);
+  transition: color 200ms ease, letter-spacing 200ms ease, text-shadow 200ms ease;
+}
+.submenu a:hover {
+  color: var(--neon-pink);
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 8px var(--neon-pink);
+}
+
+/* ===================
+Animaciones
+=================== */
+/* Loader circular girando infinitamente */
+.loader {
+  width: 90px; height: 90px;
+  border-radius: 50%;                          /*Crea un círculo perfecto de 90×90 px.*/
+  border: 6px solid var(--neon-blue);           /* Dibuja un anillo azul;*/
+  border-top-color: var(--neon-pink);          /*  el segmento superior es rosa para que, al rotar, se perciba el movimiento. */
+  animation: spin 1.5s linear infinite;        /* Rotación continua */
+  margin: var(--space-3) auto;                  
+  box-shadow: 0 0 12px var(--neon-green);     /* Centra horizontalmente y añade glow verde alrededor.*/
+}
+@keyframes spin { to { transform: rotate(360deg); } }   /* Desde el estado inicial (0°) hasta to (360°). El navegador calcula los valores intermedios entre dos estados de la rotación.*/
+
+/* Orbe digital que rota y pulsa con cambio de color */
+.block-anim {
+  width: 140px; height: 140px;
+  border-radius: 50%;
+  background: var(--neon-pink);           /* Círculo grande con color inicial rosa. Inicia en rosa*/
+  margin: var(--space-3) auto;
+  animation: pulseSpin 2s ease-in-out infinite alternate; /*Centrado y animación que va y vuelve (alternate) en 2 s, suavizando entrada y salida. */
+/* 
+- 2s → duración de un ciclo completo de la animación (del 0% al 100%). Aquí tarda 2 segundos.
+- ease-in-out → la curva de aceleración: empieza despacio, acelera en el medio y vuelve a frenar al final.
+- infinite → la animación se repite sin parar, nunca termina.
+- alternate → al acabar un ciclo, la animación se invierte: va del 0% al 100%, luego del 100% al 0%, y así sucesivamente. Esto evita saltos bruscos y crea un efecto de ida y vuelta.
+*/
+}
+/* ===================*/
+@keyframes pulseSpin {
+  0%   { transform: scale(1)   rotate(0deg);   background: var(--neon-pink); } /* Tamaño normal, sin rotación, rosa.*/
+  50%  { transform: scale(1.1) rotate(180deg); background: var(--neon-blue); }  /* Crece ligeramente, gira media vuelta, cambia a azul.*/
+  100% { transform: scale(1.2) rotate(360deg); background: var(--neon-green); } /* Más grande, gira vuelta completa, pasa a verde. Con alternate, el ciclo invierte (vuelve a rosa reduciendo tamaño y rotación).*/
+/* scale hace crecer*/
+}
+
+/* ===================*/
+/* Sello / pulso neón alternado */
+.alt-anim {
+  width: 80px; height: 80px; margin: var(--space-2) auto;
+  border-radius: 50%;
+  background: var(--neon-yellow);
+  animation: pulse 1.2s ease-in-out infinite alternate; /* Pulso suave */
+  box-shadow: 0 0 12px var(--neon-pink);
+}
+
+@keyframes pulse {
+  0%   { transform: scale(1);   opacity: 0.7; } /* version translúcido */
+  100% { transform: scale(1.2); opacity: 1; }   /* version opaco */
+}
+/* ===================*/
+/* ===================
+Scroll reveal + fallback
+=================== */
+/* Estado base oculto y desplazado hacia abajo */
+.reveal {
+  opacity: 0; transform: translateY(30px);
+  background: rgba(10,10,15,0.8);
+  border: 2px solid var(--neon-yellow);
+  border-radius: var(--radius-2);
+  padding: var(--space-2);
+  box-shadow: var(--shadow-neon);
+}
+/* Animación de entrada vertical */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+/* Versión moderna: sincroniza animación con la vista (scroll) */
+@supports (animation-timeline: view()) {
+  .reveal {
+    animation: fadeUp 1s ease both;       /* Aparece y se mantiene en estado final */
+    animation-timeline: view();           /* Ligada al scroll/viewport */
+    animation-range: entry 0% cover 40%;  /* Desde que entra hasta cubrir el 40% */
+  }
+}
+/* Fallback: si no hay soporte, animación normal por tiempo */
+@supports not (animation-timeline: view()) {
+  .reveal { animation: fadeUp 1s ease both; }
+}
+/* ===================*/
+
+/* ===================
+Footer
+=================== */
+.footer {
+  background: rgba(10,10,15,0.9);
+  border-top: 2px solid var(--neon-pink);
+  padding: var(--space-2) 0;
+  text-align: center;
+  color: var(--neon-blue);
+  margin-top: var(--space-4);
+}
+.footer .social {
+  display: flex; 
+  justify-content: center; 
+  gap: var(--space-2);
+  margin-top: var(--space-1);
+}
+.footer a { color: var(--neon-yellow); 
+  transition: color 200ms ease; }
+.footer a:hover { color: var(--neon-pink); }
+
+/* ===================*/
+/* ===================
+Tabla (desktop)
+=================== */
+/* Tabla estilizada para la guía de colores */
+.table {
+  width: 100%;                     /*la tabla ocupa todo el ancho disponible.*/
+  border-collapse: separate;       /*los bordes de las celdas no se fusionan, lo que permite dejar espacio entre filas. */
+  border-spacing: 0 1rem;          /*define el espacio entre celdas: 0 -> sin espacio horizontal. 1rem -> espacio vertical entre filas (efecto de separación). */
+  margin-top: var(--space-3);
+}
+
+.table th, .table td {             /*son los elementos hijos dentro de esa tabla.*/
+  padding: 0.75rem 1.25rem;         /*espacio interno en cada celda (vertical 0.75rem, horizontal 1.25rem).*/
+  border: 1px solid var(--neon-blue);
+  text-align: left;               
+}
+.table th {
+  background: rgba(0,240,255,0.2);
+  color: var(--neon-yellow);
+  font-weight: 600;
+}
+.table tbody tr:nth-child(even) {       /*tbody → dentro de esa tabla, se refiere al cuerpo (<tbody>), es decir, las filas con datos (no los encabezados).tr → selecciona las filas (<tr>). :nth-child(even) → es una pseudo-clase que selecciona los elementos en posición par (2ª, 4ª, 6ª fila, etc.).*/
+  background: rgba(255,45,149,0.08); /* Zebra sutil */
+}
+/* ===================*/
+
+/* ===================
+Utilidades de guía d’estil
+=================== */
+/* Alinear iconos y texto en baseline para ejemplo */
+.sample-row { display: flex; 
+  align-items: baseline; /*→ alinea los elementos hijos (texto e iconos) en la misma línea base tipográfica.*/
+  gap: var(--space-2); 
+}
+
+/* Tamaños de icono para demostración */
+.icon-lg { font-size: 32px; }
+.icon-xl { font-size: 40px; }
+
+/* Icono relleno (variaciones de Material Icons) */
+.icon-fill { font-variation-settings:  /* controla las variaciones de tipografía en fuentes variables (como Material Icons).*/ 
+  "FILL" 1,     /*icono relleno Si lleva un 0 en Fill tiene contorno y si es 1 es relleno.*/
+  "wght" 400,   /*controla el grosor del contorno/forma del icono, similar a font-weight pero a nivel de iconografía..*/
+  "GRAD" 0,     /*ajusta el “contraste” del diseño, afinando el grosor relativo de partes del icono. 0 es neutro*/
+  "opsz" 24;     /*tamaño óptico de 24px.*/
+}
+
+/* Bloques de contraste para accesibilidad */
+.block-contrast { display: flex; 
+  gap: var(--space-2); 
+  flex-wrap: wrap; /*Los elementos se colocan en varias filas (o columnas, si el eje principal es vertical).*/ }
+.block-contrast .item { padding: 0.75rem 1rem; 
+  border-radius: var(--radius-1); }
+/* ===================*/
+
+/* ===================
+ Responsive general 
+ =================== */
+@media (max-width: 768px) {
+  .container { padding: 0 var(--space-3); }  /* Más respiro lateral en móvil */
+  .cards { flex-direction: column; }         /* Tarjetas apiladas */
+  .hero { min-height: calc(50vh - var(--navH)); } /* usa la función calc() para restar la altura de la navegación al 50% de la pantalla. */
+  .nav { gap: var(--space-1); }              /* Espacio más ajustado en navbar */
+}
+
+/* ===================
+Tabla responsive (móvil)
+ =================== */
+/* Convierte la tabla en bloques con etiquetado por data-label */
+@media (max-width: 600px) {
+  /*Conversión de tabla a bloques*/
+  .table, .table thead, .table tbody, .table th, .table td, .table tr {
+    display: block; width: 100%;
+  }
+  .table thead { display: none; }            /* Oculta cabecera en móvil */
+  /*Estilo de cada fila*/
+  .table tr {
+    margin-bottom: 1.5rem;
+    border: 2px solid var(--neon-pink);
+    border-radius: var(--radius-1);
+    padding: var(--space-2);
+    background: rgba(10,10,15,0.8);
+    box-shadow: var(--shadow-neon);
+  }
+  /*Estilo de cada celda*/
+  .table td {
+    border: none; padding: 0.5rem 0;
+    text-align: left; position: relative;
+  }
+  /*Etiquetas con ::before*/
+  .table td::before {
+    content: attr(data-label);               /* Etiqueta de cada campo */
+    font-weight: 600; color: var(--neon-yellow);
+    display: block; margin-bottom: 0.25rem;
+  }
+}
+/* ===================
+Autocenter con márgenes
+=================== */
+.autocenter {
+  display: flex;
+  align-items: center;     /* Centra verticalmente */
+  justify-content: center; /* Centra horizontalmente */
+  margin: var(--space-2);  /* margen general */
+  margin-left: var(--space-4); /* margen extra a la izquierda */
+}
